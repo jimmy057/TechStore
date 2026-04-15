@@ -17,9 +17,9 @@ import androidx.compose.ui.text.input.*
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.techstore.domain.model.CartItem
+import java.util.Calendar
 import java.util.Locale
 
 @Composable
@@ -53,6 +53,41 @@ fun CheckoutScreenContent(
     var nombreTarjeta by remember { mutableStateOf("") }
     var fechaExp by remember { mutableStateOf("") }
     var cvv by remember { mutableStateOf("") }
+
+    var isFechaInvalida by remember { mutableStateOf(false) }
+
+    fun validarFechaExp(fecha: String): Boolean {
+        if (fecha.length < 4) return false
+
+        val mesStr = fecha.substring(0, 2)
+        val anioStr = fecha.substring(2, 4)
+
+        val mes = mesStr.toIntOrNull() ?: return false
+        val anio = anioStr.toIntOrNull() ?: return false
+
+        if (mes !in 1..12) return false
+
+        val cal = Calendar.getInstance()
+        val anioActual = cal.get(Calendar.YEAR) % 100
+        val mesActual = cal.get(Calendar.MONTH) + 1
+
+        if (anio < anioActual) return false
+
+        if (anio == anioActual && mes < mesActual) return false
+
+        return true
+    }
+
+    LaunchedEffect(fechaExp) {
+        isFechaInvalida = if (fechaExp.length == 4) !validarFechaExp(fechaExp) else false
+    }
+
+    val isFormularioValido = direccion.isNotBlank() &&
+            nombreTarjeta.isNotBlank() &&
+            numeroTarjeta.length == 16 &&
+            fechaExp.length == 4 &&
+            !isFechaInvalida &&
+            cvv.length == 3
 
     Scaffold(
         topBar = {
@@ -104,8 +139,14 @@ fun CheckoutScreenContent(
             )
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 OutlinedTextField(
-                    value = fechaExp, onValueChange = { if (it.length <= 4) fechaExp = it }, label = { Text("MM/AA") }, modifier = Modifier.weight(1f),
-                    visualTransformation = ExpirationDateTransformation(), keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                    value = fechaExp,
+                    onValueChange = { if (it.length <= 4) fechaExp = it },
+                    label = { Text("MM/AA") },
+                    modifier = Modifier.weight(1f),
+                    visualTransformation = ExpirationDateTransformation(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    isError = isFechaInvalida,
+                    supportingText = { if (isFechaInvalida) Text("Fecha inválida") }
                 )
                 OutlinedTextField(
                     value = cvv, onValueChange = { if (it.length <= 3) cvv = it }, label = { Text("CVV") }, modifier = Modifier.weight(1f),
@@ -116,7 +157,7 @@ fun CheckoutScreenContent(
             Button(
                 onClick = { onEvent(CheckoutUiEvent.ConfirmarPedido(direccion, "Tarjeta: $nombreTarjeta")) },
                 modifier = Modifier.fillMaxWidth().height(56.dp),
-                enabled = !state.isLoading && direccion.isNotBlank() && numeroTarjeta.length == 16,
+                enabled = !state.isLoading && isFormularioValido,
                 shape = MaterialTheme.shapes.large
             ) {
                 if (state.isLoading) {
