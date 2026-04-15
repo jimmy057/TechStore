@@ -117,5 +117,16 @@ dependencies {
     testImplementation("io.mockk:mockk:1.13.8")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1")
     testImplementation("app.cash.turbine:turbine:1.0.0")
+
+    // MockK para pruebas instrumentadas (AndroidTest / Emulador)
+    androidTestImplementation("io.mockk:mockk-android:1.13.8")
+
+    // Para probar la base de datos Room (Te ayudará a probar tus DAOs)
+    testImplementation("androidx.room:room-testing:2.6.1")
+    androidTestImplementation("androidx.room:room-testing:2.6.1")
+
+    // Core Testing (Ayuda a probar componentes de arquitectura como LiveData/Flows sin errores de hilos)
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    androidTestImplementation("androidx.arch.core:core-testing:2.2.0")
 }
 
