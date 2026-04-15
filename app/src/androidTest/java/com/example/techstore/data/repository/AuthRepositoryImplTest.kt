@@ -1,8 +1,7 @@
-package com.example.techstore.Data.repository
+package com.example.techstore.data.repository
 
 import com.example.techstore.data.remote.Api.TechStoreApi
 import com.example.techstore.data.remote.Dto.Login.AuthResponse
-import com.example.techstore.data.repository.AuthRepositoryImpl
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk

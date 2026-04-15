@@ -1,11 +1,10 @@
-package com.example.techstore.Data.repository
+package com.example.techstore.data.repository
 
 import com.example.techstore.data.local.dao.CartDao
 import com.example.techstore.data.local.datastore.SessionDataStore
 import com.example.techstore.data.local.entities.CartEntity
 import com.example.techstore.data.remote.Api.TechStoreApi
 import com.example.techstore.data.remote.Dto.pedido.PedidoDto
-import com.example.techstore.data.repository.CartRepositoryImpl
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every

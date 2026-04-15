@@ -1,11 +1,10 @@
-package com.example.techstore.Data.repository
+package com.example.techstore.data.repository
 
 import com.example.techstore.data.local.dao.ProductoDao
 import com.example.techstore.data.local.datastore.SessionDataStore
 import com.example.techstore.data.local.entities.ProductoEntity
 import com.example.techstore.data.remote.Dto.Producto.ProductoDto
 import com.example.techstore.data.remote.ProductoRemoteDataSource
-import com.example.techstore.data.repository.ProductoRepositoryImpl
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -17,6 +16,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import retrofit2.Response
+import kotlin.collections.emptyList
 
 class ProductoRepositoryImplTest {
 

@@ -1,10 +1,9 @@
-package com.example.techstore.Data.repository
+package com.example.techstore.data.repository
 
 import com.example.techstore.data.local.dao.CategoryDao
 import com.example.techstore.data.local.entities.CategoryEntity
 import com.example.techstore.data.remote.Api.TechStoreApi
 import com.example.techstore.data.remote.Dto.categoria.CategoriaDTO
-import com.example.techstore.data.repository.CategoryRepositoryImpl
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
