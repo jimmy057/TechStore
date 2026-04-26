@@ -13,8 +13,13 @@
 
 | | | |
 | :---: | :---: | :---: |
-| <img src="1.jpg" width="220"/> | <img src="2.png" width="220"/> | <img src="3.png" width="220"/> |
-| <img src="4.png" width="220"/> | <img src="5.png" width="220"/> | <img src="6.png" width="220"/> |
+<img width="494" height="1076" alt="Captura de pantalla 2026-04-26 152347" src="https://github.com/user-attachments/assets/59bcec6f-603d-4742-9dca-9a030e6e586d" />
+<img width="484" height="1075" alt="Captura de pantalla 2026-04-26 152231" src="https://github.com/user-attachments/assets/86426213-783b-45d9-a6c2-a7fd7d9c41ca" />
+<img width="497" height="1074" alt="Captura de pantalla 2026-04-26 152404" src="https://github.com/user-attachments/assets/c3148b73-be8e-4d53-be3f-e70bb45e03c6" />
+<img width="491" height="1077" alt="Captura de pantalla 2026-04-26 152248" src="https://github.com/user-attachments/assets/814b6c98-161c-4faf-981d-150fd7988249" />
+<img width="487" height="1070" alt="Captura de pantalla 2026-04-26 152302" src="https://github.com/user-attachments/assets/6dc6ef73-719f-4d80-bff2-ef7cdf0d70a2" />
+<img width="487" height="1079" alt="Captura de pantalla 2026-04-26 152314" src="https://github.com/user-attachments/assets/818447f4-4ab6-4104-8251-b8d1a8a2b73a" />
+
 
 ---
 
